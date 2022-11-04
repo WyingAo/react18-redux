@@ -14,7 +14,8 @@ const LazyLoad = (path:string) => {
 const routes:RouteObject[] = [
   {
      path:'/',
-     element:<Navigate to='/main'/>
+     element:<Navigate to='/main'/>,
+     index:'Main'
   },
   {
      path:'/main',
@@ -23,10 +24,12 @@ const routes:RouteObject[] = [
        {
           path:'/main/blog',
           element:LazyLoad('/main/blog'),
+          index:'Blog'
        },
        {
           path:'/main/system',
           element:LazyLoad('/main/system'),
+          index:'System'
        }
      ]
   },

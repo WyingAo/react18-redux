@@ -1,9 +1,8 @@
 import React ,{ memo } from 'react'
-import { Outlet }  from 'react-router-dom'
 const Blog:React.FC = memo(()=>{
   return (
   <div className='system'>
-  <Outlet></Outlet>
+  <h1>system页面</h1>
   </div>
 )
 })

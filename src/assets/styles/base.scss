@@ -1,0 +1,130 @@
+@import '~antd/dist/antd.css';
+
+/* 样式初始化 */
+body,
+html,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+header,
+menu,
+section,
+p,
+input,
+td,
+th,
+ins {
+  padding: 0;
+  margin: 0;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #666;
+}
+
+a:hover {
+  color: #666;
+  text-decoration: underline;
+}
+
+i,
+em {
+  font-style: normal;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  outline: none;
+  border: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+img {
+  border: none;
+  vertical-align: middle;
+  color: #87a0fcd8;
+}
+
+/* 全局样式 */
+textarea,
+select,
+input,
+button {
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* 解决安卓机点击出现蓝框 */
+body {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html,
+body {
+  font-size: 12px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* 解决ios点击出现蓝框 */
+a:focus,
+input:focus,
+p:focus,
+div:focus {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* 单行文本溢出省略 */
+.text-nowrap {
+  /* 禁止文字换行 */
+  white-space: nowrap;
+  /* 溢出文字显示省略号 */
+  text-overflow: ellipsis;
+
+  overflow: hidden;
+}
+
+/* 两行文本溢出省略 */
+.text-nowrap-multiline {
+  /* 溢出文字显示省略号 */
+  text-overflow: ellipsis;
+  line-clamp: 2;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.App {
+  height: 100%;
+  width: 100%;
+}

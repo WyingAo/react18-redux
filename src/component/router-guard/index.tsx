@@ -1,5 +1,5 @@
-import React,{ useEffect } from 'react'
-import { useLocation,useRoutes } from 'react-router-dom'
+import React from 'react'
+import {useRoutes } from 'react-router-dom'
 const RouterGurad = (props:any)=>{
   const  {routes}  = props
   

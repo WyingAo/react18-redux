@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  :global {
+    span {
+      margin: 20px;
+    }
+    .ant-breadcrumb {
+      margin: 15px 0 0 10px;
+      ol>li{
+        padding: 0px;
+      }
+    }
+  }
+}

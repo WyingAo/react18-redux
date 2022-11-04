@@ -1,0 +1,14 @@
+.root {
+  height: 100%;
+  :global {
+    .logo {
+      line-height: 45px;
+      background-color: #334454;
+      text-align: center;
+      span {
+        color: #fff;
+        font-size: 18px;
+      }
+    }
+  }
+}
