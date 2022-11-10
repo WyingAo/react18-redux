@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { userSignIn } from '@/service/user'
+import { userSignIn,userInfo } from '@/service/user'
 import { IAccountInfo } from '@/service/types';
 
 const userSignInAction = createAsyncThunk('user/auth',async (data:IAccountInfo)=>{
@@ -7,4 +7,9 @@ const userSignInAction = createAsyncThunk('user/auth',async (data:IAccountInfo)=
   return res
 })
 
-export {userSignInAction}
+const getUserInfo = createAsyncThunk('user/info',async ()=>{
+   const res = await userInfo()
+   return res
+})
+
+export {userSignInAction,getUserInfo}

@@ -12,4 +12,12 @@ const userSignIn = async (data:IAccountInfo):Promise<IResponseData>=>{
   })
 }
 
-export { userSignIn }
+// 个人信息
+const userInfo = async ():Promise<IResponseData>=>{
+  return http.request({
+    url:'/user/info',
+    method:'post',
+  })
+}
+
+export { userSignIn,userInfo }

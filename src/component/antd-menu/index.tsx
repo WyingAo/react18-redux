@@ -12,11 +12,11 @@ import { useAppDispatch,useAppSelector} from '@/store'
 const AntdMenu:React.FC = memo(()=>{
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const {key} = useAppSelector((state)=>state.user)
+  const key = localStorage.getItem('itemKey') || 'main/home'
   const setKey = (data:any)=>{
     navigate(data.key)
     dispatch(setMenuKey(data.key))
-
+    localStorage.setItem('itemKey',data.key)
   }
   return (
    <div className={styles.root}>
@@ -26,12 +26,12 @@ const AntdMenu:React.FC = memo(()=>{
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={['/main']}
+          defaultSelectedKeys={[key]}
           selectedKeys={[key]}
           onSelect={setKey}
           items={[
             {
-              key: '/main',
+              key: '/main/home',
               icon: <AndroidFilled />,
               label: '首页',
             },

@@ -1,11 +1,13 @@
 import React , {memo, useState} from 'react';
-import { Layout,Button } from 'antd';
+import { Layout } from 'antd';
 import styles from './index.module.scss' 
 import AntdMenu from '@/component/antd-menu'
 import AntdHeader from '@/component/antd-header'
 import { useAppDispatch,useAppSelector } from '@/store'
 import { IAccountInfo } from '@/service/types';
 import { userSignInAction } from '@/store/user/thunk'
+import { Outlet } from 'react-router-dom'
+import Home from './home/index'
 const { Header, Sider, Content } = Layout;
 const Main: React.FC = memo(()=>{
   const [collapsed, setCollapsed] = useState(false);
@@ -16,7 +18,6 @@ const Main: React.FC = memo(()=>{
     password:'admin'
   }
   const login = async ()=>{
-    console.log(111)
     const res = await dispatch(userSignInAction(data))
     console.log(res)
   }
@@ -38,8 +39,7 @@ const Main: React.FC = memo(()=>{
             minHeight: 280,
           }}
         >
-          <Button type='primary' onClick={login}>登录</Button>
-          <h1>当前选中{key}</h1>
+          <Outlet></Outlet>
         </Content>
       </Layout>
     </Layout>

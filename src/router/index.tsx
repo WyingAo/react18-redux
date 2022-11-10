@@ -22,6 +22,11 @@ const routes:RouteObject[] = [
      element:<Main/>,
      children:[
        {
+         path:'/main/home',
+         element:LazyLoad('/main/home'),
+         index:'Home'
+       },
+       {
           path:'/main/blog',
           element:LazyLoad('/main/blog'),
           index:'Blog'

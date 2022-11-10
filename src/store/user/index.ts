@@ -1,5 +1,5 @@
 import { createSlice,PayloadAction  } from '@reduxjs/toolkit'
-import { userSignInAction } from './thunk'
+import { userSignInAction,getUserInfo } from './thunk'
 const userSlice = createSlice({
   name: 'user',
   initialState:{
@@ -10,7 +10,7 @@ const userSlice = createSlice({
     menuList: [], // 当前用户拥有的菜单权限列表
     sideMenuList: [], // 侧边栏菜单数据
     userListData: [], // 用户列表数据 
-    key:'/main'
+    key:'/main/home'
   },
   reducers:{
     // 设置token
@@ -29,6 +29,13 @@ const userSlice = createSlice({
           state.authToken = action.payload.data.token
         }
       });
+
+      builder.addCase(getUserInfo.fulfilled,(state,action)=>{
+        console.log(22)
+        if(action.payload.code === 200 ) {
+          state.userInfo = action.payload.data
+        }
+      })
     }
 })
 

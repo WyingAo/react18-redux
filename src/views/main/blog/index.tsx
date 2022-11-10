@@ -1,8 +1,9 @@
 import React ,{ memo } from 'react'
 import styles from './index.module.scss'
-import { Space, Table, Tag } from 'antd';
+import { Space, Table, Tag,Button } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-
+import AntdTable from '@/component/antd-table/index'
+import { ITableConfig } from '@/component/antd-table/types';
 interface DataType {
   key: string;
   name: string;
@@ -12,54 +13,7 @@ interface DataType {
 }
 
 const Blog:React.FC = memo(()=>{
-  const columns: ColumnsType<DataType> = [
-    {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
-      render: text => <a>{text}</a>,
-    },
-    {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
-    },
-    {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address',
-    },
-    {
-      title: 'Tags',
-      key: 'tags',
-      dataIndex: 'tags',
-      render: (_, { tags }) => (
-        <>
-          {tags.map(tag => {
-            let color = tag.length > 5 ? 'geekblue' : 'green';
-            if (tag === 'loser') {
-              color = 'volcano';
-            }
-            return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
-              </Tag>
-            );
-          })}
-        </>
-      ),
-    },
-    {
-      title: 'Action',
-      key: 'action',
-      render: (_, record) => (
-        <Space size="middle">
-          <a>Invite {record.name}</a>
-          <a>Delete</a>
-        </Space>
-      ),
-    },
-  ];
+  
   const data: DataType[] = [
     {
       key: '1',
@@ -83,10 +37,74 @@ const Blog:React.FC = memo(()=>{
       tags: ['cool', 'teacher'],
     },
   ];
+  const tablePageConfig:ITableConfig<DataType>= {
+     columns: [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+        render: text => <a>{text}</a>,
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        key: 'age',
+      },
+      {
+        title: 'Address',
+        dataIndex: 'address',
+        key: 'address',
+      },
+      {
+        title: 'Tags',
+        key: 'tags',
+        dataIndex: 'tags',
+        render: (_, { tags }) => (
+          <>
+            {tags.map(tag => {
+              let color = tag.length > 5 ? 'geekblue' : 'green';
+              if (tag === 'loser') {
+                color = 'volcano';
+              }
+              return (
+                <Tag color={color} key={tag}>
+                  {tag.toUpperCase()}
+                </Tag>
+              );
+            })}
+          </>
+        ),
+      },
+      {
+        title: 'Action',
+        key: 'action',
+        render: (_, record) => (
+          <Space size="middle">
+            <a>Invite {record.name}</a>
+            <a>Delete</a>
+          </Space>
+        ),
+      },
+      {
+        title: '操作',
+        key: 'caozuo',
+        render: (_, record) => (
+          <Space size="middle">
+            <Button>编辑</Button>
+            <Button>删除</Button>
+          </Space>
+        ),
+      }
+     ],
+    tablleConfig:{
+      titile:'表格封装',
+      bordered:true,
+      size:'small'
+    }
+  }
   return (
   <div className={styles.root}>
-  <h1 className='box'>blog页面</h1>
-  <Table columns={columns} dataSource={data} />
+  <AntdTable tableConfig={tablePageConfig} dataSource={data} />
   </div>
 )
 })

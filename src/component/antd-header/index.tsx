@@ -5,7 +5,7 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
-import { useAppDispatch } from '@/store';
+import { useAppDispatch,useAppSelector } from '@/store';
 import { setMenuKey } from '@/store/user'
 import styles from './index.module.scss'
 interface IProps {
@@ -15,9 +15,9 @@ interface IProps {
 const AntdHeader: React.FC<IProps> = memo((props)=>{
   const items = [
     {
-      key:'/main',
-      path:'/main',
-      lable:'Main'
+      key:'/main/home',
+      path:'/main/home',
+      lable:'Home'
     },
     {
       key:'/main/blog',
@@ -33,7 +33,9 @@ const AntdHeader: React.FC<IProps> = memo((props)=>{
   const dispatch = useAppDispatch()
   const setKey=(key:string)=>{
     dispatch(setMenuKey(key))
+    localStorage.setItem('itemKey',key)
   }
+  const key = localStorage.getItem('itemKey')
   return (
     <div className={styles.root}>
       {React.createElement(props.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
@@ -43,7 +45,7 @@ const AntdHeader: React.FC<IProps> = memo((props)=>{
           <Breadcrumb>
           {items.map(item=>{
             return (
-              <Breadcrumb.Item key={item.key} onClick={()=>setKey(item.key)}>
+              <Breadcrumb.Item className={key===item.key?'active':''}  key={item.key} onClick={()=>setKey(item.key)}>
                <Link to={item.path}>{item.lable}</Link>
               </Breadcrumb.Item>
             )
